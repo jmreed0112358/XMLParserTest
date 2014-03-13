@@ -86,6 +86,39 @@ public class XMLParser
 	}
 
 	/**
+	 * Removes a user from the xml file.
+	 * 
+	 * @param userName
+	 */
+	public void removeUser( String UserName )
+	{
+		Element root = xmlDocument.getRootElement( );
+
+		// Find the desired user.
+		if ( hasChildren( root ) )
+		{
+
+			List<Element> users = root.getChildren( );
+			for( int i = 0 ; i < users.size( ) ; ++i )
+			{
+				System.out.println( "userName: " + users.get( i ).getChild( "username" ).getText( ) );
+				
+				if ( UserName.equals( users.get( i ).getChild( "username" )
+						.getText( ) ) )
+				{
+					users.get( i ).detach( );
+					
+					System.out.println( "Successfully removed the desired user." );
+					
+					return;
+				}
+			}
+			System.out.println( "Didn't find that user!" );
+			// Throw an exception here.
+		}
+	}
+
+	/**
 	 * This function walks through the JDOM2 document, and prints its data to
 	 * the screen.
 	 */

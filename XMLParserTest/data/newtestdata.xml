@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+  <user>
+    <username>Jeremy</username>
+    <key>
+      <keyid>Foo</keyid>
+      <pubkey>Bar</pubkey>
+      <privkey>Derp</privkey>
+    </key>
+    <key>
+      <keyid>King Kong</keyid>
+      <pubkey>Daisy</pubkey>
+    </key>
+  </user>
+  <user>
+    <username>Donkey</username>
+    <key>
+      <keyid>Mordor</keyid>
+      <pubkey>Frrzzz</pubkey>
+      <privkey>Secrets</privkey>
+    </key>
+  </user>
+  <user>
+    <username>Donald</username>
+    <key>
+      <keyid>Master Key</keyid>
+      <pubkey>Fuck</pubkey>
+      <privkey>You</privkey>
+    </key>
+  </user>
+</database>

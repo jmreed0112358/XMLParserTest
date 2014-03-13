@@ -32,6 +32,10 @@ public class XMLParserMain
 			xmlParser.printDocument( );
 			
 			xmlParser.writeDocumentToFile( "data/newtestdata.xml" );
+			
+			xmlParser.removeUser( "Donkey" );
+			
+			xmlParser.writeDocumentToFile( "data/removeduserdata.xml" );
 		}
 		catch( NullPointerException nullPointerException )
 		{
