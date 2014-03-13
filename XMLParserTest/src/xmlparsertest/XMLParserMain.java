@@ -26,6 +26,17 @@ public class XMLParserMain
 			XMLParser xmlParser = new XMLParser( "data/testdata.xml" );
 			
 			xmlParser.printDocument( );
+			
+			xmlParser.addUser( );
+			
+			xmlParser.printDocument( );
+			
+			xmlParser.writeDocumentToFile( "data/newtestdata.xml" );
+		}
+		catch( NullPointerException nullPointerException )
+		{
+			System.out.println( "Caught NullPointerException" );
+			nullPointerException.printStackTrace( );
 		}
 		catch( IOException ioException )
 		{
