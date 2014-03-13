@@ -16,8 +16,8 @@ import org.jdom2.output.XMLOutputter;
 
 public class XMLParser
 {
-	SAXBuilder	jdomBuilder	= null;
-	Document	xmlDocument	= null;
+	private SAXBuilder	jdomBuilder	= null;
+	private Document	xmlDocument	= null;
 
 	public XMLParser( )
 	{
@@ -101,15 +101,17 @@ public class XMLParser
 			List<Element> users = root.getChildren( );
 			for( int i = 0 ; i < users.size( ) ; ++i )
 			{
-				System.out.println( "userName: " + users.get( i ).getChild( "username" ).getText( ) );
-				
+				System.out.println( "userName: "
+						+ users.get( i ).getChild( "username" ).getText( ) );
+
 				if ( UserName.equals( users.get( i ).getChild( "username" )
 						.getText( ) ) )
 				{
 					users.get( i ).detach( );
-					
-					System.out.println( "Successfully removed the desired user." );
-					
+
+					System.out
+							.println( "Successfully removed the desired user." );
+
 					return;
 				}
 			}
