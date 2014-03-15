@@ -13,11 +13,11 @@
     </key>
   </user>
   <user>
-    <username>Donald</username>
+    <username>Donkey</username>
     <key>
-      <keyid>Master Key</keyid>
-      <pubkey>Fuck</pubkey>
-      <privkey>You</privkey>
+      <keyid>Mordor</keyid>
+      <pubkey>Frrzzz</pubkey>
+      <privkey>Secrets</privkey>
     </key>
   </user>
 </database>

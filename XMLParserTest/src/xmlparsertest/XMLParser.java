@@ -1,7 +1,6 @@
 package xmlparsertest;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.NoSuchFileException;
@@ -94,30 +93,46 @@ public class XMLParser
 	{
 		Element root = xmlDocument.getRootElement( );
 
+		
+
+		int index = -1;
+
 		// Find the desired user.
 		if ( hasChildren( root ) )
 		{
-
-			List<Element> users = root.getChildren( );
-			for( int i = 0 ; i < users.size( ) ; ++i )
+			do
 			{
-				System.out.println( "userName: "
-						+ users.get( i ).getChild( "username" ).getText( ) );
+				List<Element> users = root.getChildren( );
+				
+				index = findUser( UserName, root );
 
-				if ( UserName.equals( users.get( i ).getChild( "username" )
-						.getText( ) ) )
+				if ( index != -1 )
 				{
-					users.get( i ).detach( );
-
-					System.out
-							.println( "Successfully removed the desired user." );
-
-					return;
+					// We've found the user. Detach.
+					users.get( index ).detach( );
 				}
-			}
-			System.out.println( "Didn't find that user!" );
-			// Throw an exception here.
+			} while( index != -1 );
 		}
+	}
+
+	private int findUser( String UserName, Element root )
+	{
+		List<Element> users = root.getChildren( );
+
+		for( int i = 0 ; i < users.size( ) ; ++i )
+		{
+			System.out.println( "userName: "
+					+ users.get( i ).getChild( "username" ).getText( ) );
+
+			if ( UserName.equals( users.get( i ).getChild( "username" )
+					.getText( ) ) )
+			{
+				System.out.println( "Found the user!" );
+				return i;
+			}
+		}
+		System.out.println( "Didn't find the user" );
+		return -1;
 	}
 
 	/**
