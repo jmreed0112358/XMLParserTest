@@ -3,6 +3,7 @@ package xmlparsertest;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringReader;
 import java.nio.file.NoSuchFileException;
 import java.util.List;
 
@@ -41,7 +42,23 @@ public class XMLParser
 
 		xmlDocument = jdomBuilder.build( fileName );
 	}
-
+	
+	public void parseXMLString( String xmlString )
+	{
+		try
+		{
+			xmlDocument = new SAXBuilder( ).build( new StringReader( xmlString ) );
+		}
+		catch( JDOMException jdomException )
+		{
+			jdomException.printStackTrace();
+		}
+		catch( IOException ioException )
+		{
+			ioException.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Adds a new user to the document. Rough version. In the future, this will
 	 * take input from the user. We'll have another version that takes a user
@@ -86,14 +103,13 @@ public class XMLParser
 
 	/**
 	 * Removes a user from the xml file.
-	 * 
+	 * TODO: Think of a better way to do this.  This is an O(n^2) algorithm in the worst case.
+	 * I know of one way to improve on this, but we'd increase memory complexity.
 	 * @param userName
 	 */
 	public void removeUser( String UserName )
 	{
 		Element root = xmlDocument.getRootElement( );
-
-		
 
 		int index = -1;
 
@@ -115,6 +131,12 @@ public class XMLParser
 		}
 	}
 
+	/**
+	 * Searches the JDOM2 structure for a given username.
+	 * @param UserName
+	 * @param root
+	 * @return
+	 */
 	private int findUser( String UserName, Element root )
 	{
 		List<Element> users = root.getChildren( );

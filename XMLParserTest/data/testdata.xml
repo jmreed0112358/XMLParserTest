@@ -52,4 +52,12 @@
       <privkey>You</privkey>
     </key>
   </user>
+  <user>
+    <username>Donald</username>
+    <key>
+      <keyid>Master Key</keyid>
+      <pubkey>Fuck</pubkey>
+      <privkey>You</privkey>
+    </key>
+  </user>
 </database>
