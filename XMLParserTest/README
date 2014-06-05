@@ -1,0 +1,4 @@
+Sample XML parsing code. 
+
+Requires the jdom2 XML parsing library.
+jdom2 is availiable at: http://www.jdom.org/ and is licensed under the Apache License.
